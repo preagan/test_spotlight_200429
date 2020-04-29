@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  title: test
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /trigger/triggered:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-triggeringunit
+    post:
+      summary: ''
+      operationId: post-triggeringunit
+      responses:
+        '200':
+          description: OK
+        '':
+          description: Tells the unit what color to display.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  colorRed:
+                    type: number
+                  colorGreen:
+                    type: number
+                  colorBlue:
+                    type: number
+                  newStatus:
+                    type: string
+      description: Tells the system that a triggering event happened for the unit
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                unitID:
+                  type: number
+                currentStatus:
+                  type: string
+                curentDisplay:
+                  type: string
+                internalTemp:
+                  type: number
+              required:
+                - unitID
+                - currentStatus
+                - curentDisplay
+                - internalTemp
+    parameters: []
+components:
+  schemas: {}
